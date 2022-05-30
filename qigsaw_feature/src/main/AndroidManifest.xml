@@ -4,7 +4,7 @@
     package="com.darrenfantasy.qigsaw_feature">
 
     <dist:module
-        dist:instant="false"
+        dist:onDemand="true"
         dist:title="@string/title_qigsaw_feature">
         <dist:delivery>
             <dist:on-demand />

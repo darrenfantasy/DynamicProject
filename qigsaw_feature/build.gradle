@@ -1,12 +1,15 @@
 plugins {
     id 'com.android.dynamic-feature'
 }
+apply plugin: 'com.iqiyi.qigsaw.dynamicfeature'
 android {
     compileSdkVersion 32
 
     defaultConfig {
         minSdkVersion 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode 1
+        versionName "1.1"
     }
 
     buildTypes {
