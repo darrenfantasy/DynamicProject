@@ -9,3 +9,13 @@ buildscript {
         classpath 'com.iqiyi.android.qigsaw:gradle-plugin:1.4.0'
     }
 }
+
+ext {
+    versions = [
+            'compileSdk': 29,
+            'minSdk'    : 14,
+            'targetSdk' : 28,
+            'support'   : '27.1.1'
+    ]
+    sample = false
+}

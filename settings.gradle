@@ -1,3 +1,4 @@
 rootProject.name = "DynamicProject"
 include ':app'
 include ':qigsaw_feature'
+include ':downloader'
