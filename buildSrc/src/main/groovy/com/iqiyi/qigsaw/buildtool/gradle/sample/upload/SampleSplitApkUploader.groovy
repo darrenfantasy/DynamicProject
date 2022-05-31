@@ -9,13 +9,7 @@ class SampleSplitApkUploader implements SplitApkUploader {
 
     @Override
     String uploadSync(Project appProject, File splitApk, String splitName) throws SplitApkUploadException {
-        List<String> testOnly = appProject.extensions.splitUpload.testOnly
-        boolean useTestEnv = appProject.extensions.splitUpload.useTestEnv
-        if (useTestEnv) {
-            return uploadSplitApk(splitApk, splitName, true)
-        } else {
-            return uploadSplitApk(splitApk, splitName, usingTestEnvAnyWay(testOnly, splitName))
-        }
+        return uploadSplitApk(splitApk, splitName, true)
     }
 
 
@@ -28,14 +22,14 @@ class SampleSplitApkUploader implements SplitApkUploader {
      */
     static String uploadSplitApk(File splitApk, String splitName, boolean useTestEnv) {
         println("Upload split " + splitName + " split apk file path: " + splitApk + " useTestEnv: " + useTestEnv)
-        String url = ""
+        String url = ""//你的服务器地址
 
-        HttpURLConnectionUtil connectionUtil = new HttpURLConnectionUtil(url, HttpURLConnection.HTTPMETHOD_POST);
+        HttpURLConnectionUtil connectionUtil = new HttpURLConnectionUtil(url, "POST");
         connectionUtil.addTextParameter("remotePath","test/apk")
         connectionUtil.addFileParameter("file",splitApk)
         String result = new String(connectionUtil.post(), "UTF-8")
         def data = new JsonSlurper().parseText(result)
         println("result:data:"+data)
-        return null
+        return data.ret
     }
 }

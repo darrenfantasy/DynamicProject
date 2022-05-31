@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.iqiyi.qigsaw.application'
-
+//apply plugin: 'com.iqiyi.qigsaw.application'
+apply plugin: 'com.iqiyi.qigsaw.sample.application'
 android {
     compileSdkVersion 32
 
@@ -55,7 +55,7 @@ qigsawSplit {
      * optional, default 'false'
      * Whether upload all split APKs to CDN, ignored 'onDemand' declared in split AndroidManifest file.
      */
-    releaseSplitApk = false
+    releaseSplitApk = true
 
     /**
      * Whether build multiple APKs for ABIs

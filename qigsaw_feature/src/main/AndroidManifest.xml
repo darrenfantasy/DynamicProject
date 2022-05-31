@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.darrenfantasy.qigsaw_feature">
+
+    <application>
+
+        <activity
+            android:name=".JavaSampleActivity"
+            android:process=":qigsaw" />
+
+    </application>
+
 
     <dist:module
         dist:onDemand="true"
         dist:title="@string/title_qigsaw_feature">
-        <dist:delivery>
-            <dist:on-demand />
-        </dist:delivery>
-        <dist:fusing dist:include="true" />
+        <dist:fusing dist:include="false" />
     </dist:module>
 </manifest>

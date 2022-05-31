@@ -1,4 +1,4 @@
-package com.iqiyi.qigsaw.sample.java;
+package com.darrenfantasy.qigsaw_feature;
 
 import android.app.Application;
 
