@@ -16,8 +16,13 @@ import com.google.android.play.core.splitinstall.SplitInstallSessionState;
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener;
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus;
 import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "DynamicFeatures";
@@ -30,7 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         installManager = SplitInstallManagerFactory.create(this);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.hello_text).setOnClickListener(this);
+        findViewById(R.id.open_plugin).setOnClickListener(this);
+        findViewById(R.id.delete_plugin).setOnClickListener(this);
+
         moduleJava = "qigsaw_feature";
 
     }
@@ -57,8 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.hello_text:
+            case R.id.open_plugin:
                 startQigsawInstaller(moduleJava);
+                break;
+            case R.id.delete_plugin:
+                uninstallAllFeaturesDeferred();
                 break;
             default:
                 break;
@@ -155,6 +165,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            displayProgress();
 //        }
 //        progressText.setText(message);
+    }
+
+    private void uninstallAllFeaturesDeferred() {
+
+        final List<String> modules = Arrays.asList(moduleJava);
+        getInstalledModule();
+        installManager.deferredUninstall(modules).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                toastAndLog("Deferred uninstallation " + modules);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                toastAndLog("Deferred uninstallation  Failure " + e.getMessage());
+                getInstalledModule();
+            }
+        });
+    }
+
+    private void getInstalledModule(){
+        Set<String> set =  installManager.getInstalledModules();
+        Iterator<String> it = set.iterator();
+        while (it.hasNext()){
+            String value = it.next();
+            toastAndLog("module: "+value);
+        }
     }
 
 }

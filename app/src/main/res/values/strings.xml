@@ -21,4 +21,8 @@
     <string name="sample_prompt_desc">Using this feature will consume about %s M traffic data, Do you want to continue downloading?</string>
     <string name="sample_confirm">Confirm</string>
     <string name="sample_cancel">Cancel</string>
+
+    <string name="app_open_plugin">打开插件</string>
+    <string name="app_install_all_deferred">Install deferred</string>
+    <string name="app_uninstall_all_deferred">卸载插件（下次打开需要重新下载）</string>
 </resources>

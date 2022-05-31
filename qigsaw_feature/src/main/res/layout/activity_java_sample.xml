@@ -4,16 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_hello_java"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="feature hhhh"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_hello_java"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_hello_java"
-        app:layout_constraintRight_toRightOf="@+id/activity_hello_java"
-        app:layout_constraintTop_toTopOf="@+id/activity_hello_java" />
+        android:text="this is feature page" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/curry">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/golden_state">
+
+    </ImageView>
 </LinearLayout>
